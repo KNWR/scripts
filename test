@@ -17,7 +17,7 @@
 
 echo_me() {
 	echo $@
-	$@
+	eval "$@"
 }
 
 #echo_me ls \"$1\" # might need to wrap in quotes - but looks fine w/o
@@ -30,5 +30,10 @@ echo_me() {
 echo "OK, section 2 now \n"
 
 echo_me git add -A
-echo_me git commit -m \"$1\"
+# echo_me git commit -m \"$1\" -- this had the commit message as "$1" - i.e. with quotes around it
+# 2nd problem - with ./test hi there => had commit message as "hi" on github ... 
+	# we want it as hi there, without quotes ... - so we can remove quotes
+	# now just need to take in the string ... 
+	# ok so issue is the space in the cmd line arg 
+echo_me git commit -m \""$*"\"
 echo_me git push origin master 
