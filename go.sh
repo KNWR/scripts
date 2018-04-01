@@ -12,11 +12,16 @@ echo_me() {
 # store the commit message; the commit message is the first argument the script is called with
 message=$*
 
-
-# timeDelay = 15m
+# note to self - no spaces between variable assignments
+# minutes * 60 => seconds, sleep only takes seconds
+timeDelay=1
+timeDelay=$(($timeDelay*60))
 
 # wait for the specified delay
-# sleep $timeDelay
+sleep $timeDelay
+
+#get a notif
+say error
 
 # ok what's the commit message - specified after or before? in this case, specified in the cmd line args
 # should double check to ask if want to commit whatever's coded ? or not, if this is for max to the metal focus ... 
