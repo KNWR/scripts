@@ -32,8 +32,7 @@ do
 				# ... could parse the string, or figure out how to have char[space]char be considered $1, the first argument even though space within , and then have a 2nd arg, $2 after that
 			echo_me git push origin master 
 			;;
-		"N") break
-			;;
+		"N") break;;
 	esac
 done
 
