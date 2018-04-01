@@ -3,6 +3,9 @@
 #set -x # this will echo all the commands ... but it puts a + sign in front, not super aesthetic
 # set - sets the option, set + unsets it ... so just run it at the right spot
 
+
+# SECTION 1
+
 #option 1 -- this works, commenting it out for clarity in testing rn
 	# set -x
 	# ls \"$1\"
@@ -10,12 +13,21 @@
 
 #option 2 - using a function
 
-echo "OK, 2nd option now line\n"
+#echo "OK, 2nd option now line\n"
 
 echo_me() {
 	echo $@
-	eval $@
+	$@
 }
 
-echo_me "ls \"$1\""
+#echo_me ls \"$1\" # might need to wrap in quotes - but looks fine w/o
 
+# so, problem here is that it doesn't execute including the quotations -- whereas option 1 does ... 
+# set -x is perf here ... but aesthetics ... ... set -x also works well when the stuff you want to print is at end of file, otherwise set +x shows up 
+
+
+# SECTION 2 - TESTING W/git
+echo "OK, section 2 now \n"
+
+echo_me git add -A
+echo_me git commit -m \"$1\"
