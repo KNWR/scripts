@@ -2,11 +2,11 @@
 
 echo_me() {
 	echo $@
-	"$@" #previously eval "$@"
+	"$@" #previously eval "$@" ... but this works too 
 }
 
 echo_me git add -A
-echo_me git commit -m \""$*"\"
+echo_me git commit -m "$*" # previously \""$*"\"
 echo_me git push origin master 
 
 #ok this works, just now removing quotations to get lo más lean k posible
