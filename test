@@ -31,3 +31,4 @@ echo "OK, section 2 now \n"
 
 echo_me git add -A
 echo_me git commit -m \"$1\"
+echo_me git push origin master 
