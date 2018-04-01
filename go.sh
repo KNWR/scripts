@@ -6,34 +6,48 @@
 # little function to print the command to the terminal, and then run it
 echo_me() {
 	echo $@
-	"$@" # previously eval "$@", but this works too 
+	eval "$@" # previously eval "$@", but this works too 
 }
 
-timeDelay = 15m
+# store the commit message; the commit message is the first argument the script is called with
+message=$*
 
-# the commit message is the first argument the script is called with
-message = $*
+
+# timeDelay = 15m
 
 # wait for the specified delay
-#sleep $timeDelay
-
+# sleep $timeDelay
 
 # ok what's the commit message - specified after or before? in this case, specified in the cmd line args
 # should double check to ask if want to commit whatever's coded ? or not, if this is for max to the metal focus ... 
 
-echo "Commit?"
-select decide in "Y" "N"
-do
-	case $decide in
-		"Y") 
-			echo_me git add -A
-			echo_me git commit -m \""$message"\" # "$*" worked too, but this feels safer ... maybe nonsense
-			# also note that if want to add other options to this - ex. changing the amount of time, via command line argument, $* will be problematic
-				# ... could parse the string, or figure out how to have char[space]char be considered $1, the first argument even though space within , and then have a 2nd arg, $2 after that
-			echo_me git push origin master 
-			break;;
-		"N") break;;
-	esac
-done
+# ***** read -p method *****
+read -p "Commit?" decide
+case $decide in
+	Y|y ) echo_me git add -A
+ 		echo_me git commit -m \"$message\" # "$*" worked too, but this feels safer ... maybe nonsense
+ 		# also note that if want to add other options to this - ex. changing the amount of time, via command line argument, $* will be problematic
+ 			# ... could parse the string, or figure out how to have char[space]char be considered $1, the first argument even though space within , and then have a 2nd arg, $2 after that
+		#echo_me git push origin master 
+		break ;;
+	N|n ) break ;;
+esac
+
+#the commit message gets fucked up
 
 
+# select method  - answer with a number corresponding to command
+# echo "Commit?"
+# select decide in "Y" "N"
+# do
+# 	case $decide in
+# 		"Y") 
+# 			echo_me git add -A
+# 			echo_me git commit -m \""$message"\" # "$*" worked too, but this feels safer ... maybe nonsense
+# 			# also note that if want to add other options to this - ex. changing the amount of time, via command line argument, $* will be problematic
+# 				# ... could parse the string, or figure out how to have char[space]char be considered $1, the first argument even though space within , and then have a 2nd arg, $2 after that
+# 			echo_me git push origin master 
+# 			break;;
+# 		"N") break;;
+# 	esac
+# done
