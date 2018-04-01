@@ -6,7 +6,7 @@
 # little function to print the command to the terminal, and then run it
 echo_me() {
 	echo $@
-	eval "$@" # previously eval "$@", but this works too 
+	eval "$@" # "@", @ did NOT work - they messed up the commit message
 }
 
 # store the commit message; the commit message is the first argument the script is called with
@@ -22,18 +22,16 @@ message=$*
 # should double check to ask if want to commit whatever's coded ? or not, if this is for max to the metal focus ... 
 
 # ***** read -p method *****
-read -p "Commit?" decide
+read -p "Commit? y\n 	" decide
 case $decide in
 	Y|y ) echo_me git add -A
  		echo_me git commit -m \"$message\" # "$*" worked too, but this feels safer ... maybe nonsense
  		# also note that if want to add other options to this - ex. changing the amount of time, via command line argument, $* will be problematic
  			# ... could parse the string, or figure out how to have char[space]char be considered $1, the first argument even though space within , and then have a 2nd arg, $2 after that
-		#echo_me git push origin master 
+		echo_me git push origin master 
 		break ;;
 	N|n ) break ;;
 esac
-
-#the commit message gets fucked up
 
 
 # select method  - answer with a number corresponding to command
