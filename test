@@ -1,39 +1,12 @@
 #!/bin/sh
 
-#set -x # this will echo all the commands ... but it puts a + sign in front, not super aesthetic
-# set - sets the option, set + unsets it ... so just run it at the right spot
-
-
-# SECTION 1
-
-#option 1 -- this works, commenting it out for clarity in testing rn
-	# set -x
-	# ls \"$1\"
-	# set +x
-
-#option 2 - using a function
-
-#echo "OK, 2nd option now line\n"
-
 echo_me() {
 	echo $@
-	eval "$@"
+	"$@" #previously eval "$@"
 }
 
-#echo_me ls \"$1\" # might need to wrap in quotes - but looks fine w/o
-
-# so, problem here is that it doesn't execute including the quotations -- whereas option 1 does ... 
-# set -x is perf here ... but aesthetics ... ... set -x also works well when the stuff you want to print is at end of file, otherwise set +x shows up 
-
-
-# SECTION 2 - TESTING W/git
-echo "OK, section 2 now \n"
-
 echo_me git add -A
-# echo_me git commit -m \"$1\" -- this had the commit message as "$1" - i.e. with quotes around it
-# 2nd problem - with ./test hi there => had commit message as "hi" on github ... 
-	# we want it as hi there, without quotes ... - so we can remove quotes
-	# now just need to take in the string ... 
-	# ok so issue is the space in the cmd line arg 
 echo_me git commit -m \""$*"\"
 echo_me git push origin master 
+
+#ok this works, just now removing quotations to get lo más lean k posible
