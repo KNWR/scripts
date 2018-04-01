@@ -1,0 +1,21 @@
+#!/bin/sh
+
+#set -x # this will echo all the commands ... but it puts a + sign in front, not super aesthetic
+# set - sets the option, set + unsets it ... so just run it at the right spot
+
+#option 1 -- this works, commenting it out for clarity in testing rn
+	# set -x
+	# ls \"$1\"
+	# set +x
+
+#option 2 - using a function
+
+echo "OK, 2nd option now line\n"
+
+echo_me() {
+	echo $@
+	eval $@
+}
+
+echo_me "ls \"$1\""
+
