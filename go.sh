@@ -31,7 +31,7 @@ do
 			# also note that if want to add other options to this - ex. changing the amount of time, via command line argument, $* will be problematic
 				# ... could parse the string, or figure out how to have char[space]char be considered $1, the first argument even though space within , and then have a 2nd arg, $2 after that
 			echo_me git push origin master 
-			;;
+			break;;
 		"N") break;;
 	esac
 done
