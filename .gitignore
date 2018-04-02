@@ -1,2 +1,11 @@
 wordline/pressconfig.txt
 wordline/designFiles
+
+wordline/pip-selfcheck.json
+wordline/setup.py
+wordline/bin
+wordline/include
+wordline/lib
+wordline/myhello.egg-info
+wordline/__pycache__
+wordline/wpWrite.egg-info
