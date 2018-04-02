@@ -10,7 +10,7 @@ echo_me() {
 }
 
 # wait for the specified delay
-# if want to set timeDelay from cmdargs can just get it as the first arg, then shift and still use =$*
+# if want to set timeDelay from cmdargs can just get it as the first arg, then shift and still store $* into 'message' variable, as commit message
 timeDelay=1
 sleep $(($timeDelay*60))
 
@@ -24,7 +24,7 @@ osascript -e 'display notification with title "Commit"'  # hate that can't get t
 
 
 # ***** read -p method *****
-# should double check to ask if want to commit whatever's coded ? or not, if this is for max to the metal focus ... 
+# should double check to ask if want to commit whatever's coded ? or /not/, if this is for max to the metal focus ... 
 read -p "Commit? y\n 	" decide
 case $decide in
 	Y|y ) echo_me git add -A
