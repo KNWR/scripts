@@ -39,7 +39,7 @@ echo_me git commit -m \"$message\" # "$*" worked too, but this feels safer ... m
  		# ... could parse the string, or figure out how to have char[space]char be considered $1, the first argument even though space within , and then have a 2nd arg, $2 after that
 echo_me git push origin master 
 
-
+# could create opt where if commit msg not given, prompts for it at end? 
 
 # *** alt => asks if you want to commit or not 
 # read -p "Commit? y\n 	" decide
