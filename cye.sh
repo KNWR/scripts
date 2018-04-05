@@ -8,5 +8,9 @@ mkdir $projName
 cd $projName
 echo "# $projName\n\n" > README.md # normal
 # echo "# $projName\n\n## Focus\n\n\n\n## User & Constraints\n\n\n\n## Exploration\n\n\n\n## Expansion" > README.md # all in the readme
+# or echo into separate files
 
+# can add flag for the git init 
+#git init
+#git remote add origin "https://github.com/KNWR/$projName.git"
 

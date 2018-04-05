@@ -13,7 +13,8 @@ echo_me() {
 # if want to set timeDelay from cmdargs can just get it as the first arg, then shift and still store $* into 'message' variable, as commit message
 timeDelay=15
 warningTime=4
-sleep $(($(timeDelay-$warningTime)*60)) #wait why $(($(...))) => can I just put $((( expr )))?
+
+sleep $(($(($timeDelay-$warningTime))*60))
 
 
 # then notif 
