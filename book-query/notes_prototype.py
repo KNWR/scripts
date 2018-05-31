@@ -2,6 +2,21 @@
 # Load the db ...
 
 import sqlite3
+
+
+# wrapper for sqlite queries on the book annotations db
+def search(, print=True):
+	cursor = conn.cursor()
+
+	print(result)
+	return result
+
+
+
+
+
+
+# ---- Rough Work ---- # 
 conn = sqlite3.connect('Copy_AEAnnotation_v10312011_1727_local.sqlite')
 
 print("Book notes:\n")
@@ -18,7 +33,7 @@ cursor = conn.cursor()
 #cursor.execute("SELECT * FROM ZAEANNOTATION WHERE length(ZANNOTATIONNOTE) > length(replace(ZANNOTATIONNOTE, ' ', '')) + 50 AND ZANNOTATIONSELECTEDTEXT IS NOT NULL ORDER BY ZANNOTATIONMODIFICATIONDATE DESC")
 # cursor.execute("SELECT * FROM ZAEANNOTATION WHERE length(ZANNOTATIONNOTE) > length(replace(ZANNOTATIONNOTE, ' ', '')) + 25 AND ZANNOTATIONSELECTEDTEXT IS NOT NULL ORDER BY length(ZANNOTATIONNOTE) DESC")
 #cursor.execute("SELECT * FROM ZAEANNOTATION WHERE length(ZANNOTATIONNOTE) > length(replace(ZANNOTATIONNOTE, ' ', '')) + 25 AND ZANNOTATIONSELECTEDTEXT IS NOT NULL AND ZANNOTATIONDELETED IS NOT 1 ORDER BY length(ZANNOTATIONNOTE) DESC")
-cursor.execute("SELECT * FROM ZAEANNOTATION WHERE length(ZANNOTATIONNOTE) > length(replace(ZANNOTATIONNOTE, ' ', '')) + 15 AND ZANNOTATIONSELECTEDTEXT IS NOT NULL AND ZANNOTATIONDELETED IS NOT 1 ORDER BY ZANNOTATIONMODIFICATIONDATE DESC")
+cursor.execute("SELECT * FROM ZAEANNOTATION WHERE ZANNOTATIONSELECTEDTEXT IS NOT NULL AND ((ZANNOTATIONSELECTEDTEXT LIKE '%animal%') OR (ZANNOTATIONNOTE LIKE '%animal%')) AND ZANNOTATIONDELETED IS NOT 1 ORDER BY ZANNOTATIONMODIFICATIONDATE DESC")
 
 
 # Still selects highlights with no note content - might be where deleted the content, or put it in as a note but left no text content therein
